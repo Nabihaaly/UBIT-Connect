@@ -10,7 +10,6 @@ const Navbar = () => {
         <div>
             <EmailPassword/>
         </div>
-        <p>ehello</p>
     </div>
   )
 }
