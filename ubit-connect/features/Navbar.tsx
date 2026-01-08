@@ -6,7 +6,7 @@ const Navbar = () => {
   const user = useUserContext()
   return (
     <div>Navbar
-        {user?   <div>{user.id}</div> : null}
+        {user?<div>{user.id}</div> : null}
         <div>
             <EmailPassword/>
         </div>
