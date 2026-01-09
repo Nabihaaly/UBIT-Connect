@@ -12,7 +12,12 @@ model Profile {
   id String @id @db.Uuid 
   //Same UUID as auth.users.id
   email String @unique
-  seatNo    String   @unique 
+  seatNo    String?   @unique
+  profilePic String?
+  fullName String?
+  department String?
+  batch String?
+  bio String?
   createdAt DateTime @default(now())
 
   posts   Post[]  // ← Add this for opposite relation
