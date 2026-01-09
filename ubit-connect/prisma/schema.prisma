@@ -8,8 +8,33 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id String @id @db.Uuid
-  email String @unique 
+model Profile {
+  id String @id @db.Uuid 
+  //Same UUID as auth.users.id
+  email String @unique
+  seatNo    String   @unique 
   createdAt DateTime @default(now())
+
+  posts   Post[]  // ← Add this for opposite relation
 }
+
+model Post {
+  id        String   @id @default(uuid())
+  title     String
+  content   String?
+  authorId  String   @db.Uuid
+  createdAt DateTime @default(now())
+
+  images PostImage[]
+  author Profile    @relation(fields: [authorId], references: [id]) 
+  // (bidirectional relation) Profile ki bh field ho for posts (opposite relation)
+}
+
+model PostImage {
+  id     String @id @default(uuid())
+  url    String
+  postId String
+
+  post Post @relation(fields: [postId], references: [id])
+}
+
