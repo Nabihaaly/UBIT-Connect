@@ -14,11 +14,11 @@ export async function POST(request: Request) {
     try{
         const formData = await request.formData()
         const id= formData.get("id") as string
-        const fullname= formData.get("fullname") as string
-        const bio= formData.get("bio") as string
-        const seatno= formData.get("seatno") as string
-        const depart= formData.get("depart") as string
-        const batch= formData.get("batch")as string
+        const fullname= formData.get("fullname") as string | null
+        const bio= formData.get("bio") as string | null
+        const seatno= formData.get("seatno") as string | null
+        const depart= formData.get("depart") as string | null
+        const batch= formData.get("batch")as string | null
         const pfp= formData.get("pfp") as File | null
 
         let image: string | undefined
